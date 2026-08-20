@@ -1,0 +1,112 @@
+<!--
+  Це найпростіша HTML-сторінка з Tailwind CSS.
+
+  Що таке Tailwind CSS?
+  Замість того, щоб писати свій CSS-файл (наприклад .card { padding: 16px; })
+  ти одразу пишеш готові класи прямо в HTML: class="p-4 bg-white rounded-lg"
+  Кожен клас — це одна маленька властивість стилю:
+    p-4        -> padding: 1rem (відступ всередині)
+    bg-white   -> background-color: white
+    rounded-lg -> border-radius: велике заокруглення
+  Тобі не треба вигадувати назви класів і перемикатись між файлами —
+  все видно одразу в розмітці.
+
+  Тут Tailwind підключений через CDN (рядок <script> нижче) —
+  це найпростіший спосіб для навчання, без встановлення і налаштувань.
+  Для реального проєкту пізніше використовують збірку (Vite/PostCSS),
+  але для старту CDN — ідеальний варіант.
+-->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <!-- meta-теги: службова інформація про сторінку, її не видно на екрані -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Проста сторінка з Tailwind CSS</title>
+
+  <!-- Підключаємо Tailwind CSS прямо з інтернету (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!--
+  <body> — це все, що видно користувачу на сторінці.
+  Класи на body:
+    bg-slate-100     -> світло-сірий фон усієї сторінки
+    min-h-screen     -> висота мінімум на весь екран
+    flex items-center justify-center -> вирівнює вміст по центру
+                                          (і по горизонталі, і по вертикалі)
+    p-6              -> відступи з усіх боків, щоб на маленьких екранах
+                          вміст не прилипав до країв
+-->
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-6">
+
+  <!--
+    Це і є "картка" (card) — типовий блок в UI-дизайні:
+    білий прямокутник із заокругленими кутами й тінню,
+    в якому лежить якийсь контент.
+
+    bg-white       -> білий фон картки
+    rounded-2xl    -> сильно заокруглені кути
+    shadow-lg      -> велика м'яка тінь навколо картки (додає "об'єму")
+    p-8            -> внутрішні відступи (padding), щоб текст не тулився до країв
+    max-w-sm       -> максимальна ширина картки (щоб не розтягувалась на весь екран)
+    w-full         -> на маленьких екранах займає всю доступну ширину до max-w-sm
+  -->
+  <div class="bg-white rounded-2xl shadow-lg p-8 max-w-sm w-full">
+
+    <!--
+      Маленький кружечок-аватар зверху.
+      w-16 h-16      -> ширина й висота 4rem (64px)
+      rounded-full   -> робить елемент круглим
+      bg-indigo-500  -> заливка кольором (індиго)
+      flex items-center justify-center -> центрує текст всередині кружечка
+      text-white font-bold text-xl -> стилі тексту всередині
+      mx-auto        -> центрує сам кружечок по горизонталі
+      mb-4           -> відступ знизу від наступного елемента
+    -->
+    <div class="w-16 h-16 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
+      T
+    </div>
+
+    <!--
+      Заголовок картки.
+      text-xl        -> розмір шрифту
+      font-bold      -> жирний шрифт
+      text-slate-800 -> темно-сірий (майже чорний) колір тексту
+      text-center    -> текст по центру
+      mb-2           -> невеликий відступ знизу
+    -->
+    <h1 class="text-xl font-bold text-slate-800 text-center mb-2">
+      Tanya Digital
+    </h1>
+
+    <!--
+      Підзаголовок / опис.
+      text-slate-500 -> світліший сірий колір (для другорядного тексту)
+      text-center    -> текст по центру
+      mb-6           -> більший відступ знизу, перед кнопкою
+    -->
+    <p class="text-slate-500 text-center mb-6">
+      Це проста картка, зроблена на Tailwind CSS,
+      щоб показати, як стилі задаються класами прямо в HTML.
+    </p>
+
+    <!--
+      Кнопка.
+      w-full          -> займає всю ширину картки
+      bg-indigo-500   -> фон кнопки
+      hover:bg-indigo-600 -> колір фону при наведенні мишки (hover: — це стан)
+      text-white      -> білий текст
+      font-semibold   -> напівжирний шрифт
+      py-2            -> вертикальні відступи (padding-top/bottom)
+      rounded-lg      -> заокруглені кути кнопки
+      transition      -> плавна анімація зміни кольору при hover
+    -->
+    <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 rounded-lg transition">
+      Дізнатись більше
+    </button>
+
+  </div>
+
+</body>
+</html>
