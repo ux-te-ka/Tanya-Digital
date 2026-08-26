@@ -26,6 +26,21 @@
 
   <!-- Підключаємо Tailwind CSS прямо з інтернету (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!--
+    Токени з Figma Variables файлу "Test design system"
+    (tokens.json/tokens.dark.json -> Style Dictionary -> src/styles/*, npm run build:tokens).
+    tokens.css задає --color-*/--radius-*/... для Light (:root),
+    tokens.dark.css перевизначає --color-* під [data-theme="dark"].
+    tailwind.tokens.js віддає ті самі значення через var(...), тому Tailwind-класи
+    (напр. bg-text-primary-base) автоматично стають світлими/темними разом з CSS.
+  -->
+  <link rel="stylesheet" href="./src/styles/tokens.css" />
+  <link rel="stylesheet" href="./src/styles/tokens.dark.css" />
+  <script type="module">
+    import tailwindTokens from "./src/styles/tailwind.tokens.js";
+    tailwind.config = tailwindTokens;
+  </script>
 </head>
 
 <!--
@@ -64,7 +79,7 @@
       mx-auto        -> центрує сам кружечок по горизонталі
       mb-4           -> відступ знизу від наступного елемента
     -->
-    <div class="w-16 h-16 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
+    <div class="w-16 h-16 rounded-full bg-background-primary-bold-200 flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
       T
     </div>
 
