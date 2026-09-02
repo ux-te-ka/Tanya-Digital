@@ -32,15 +32,17 @@
     (tokens.json/tokens.dark.json -> Style Dictionary -> src/styles/*, npm run build:tokens).
     tokens.css задає --color-*/--radius-*/... для Light (:root),
     tokens.dark.css перевизначає --color-* під [data-theme="dark"].
-    tailwind.tokens.js віддає ті самі значення через var(...), тому Tailwind-класи
-    (напр. bg-text-primary-base) автоматично стають світлими/темними разом з CSS.
+
+    Кольори в розмітці нижче використовують Tailwind arbitrary-value синтаксис
+    bg-[var(--color-...)] — беруть значення напряму з CSS-змінної, без окремого
+    tailwind.config. Це навмисно: <script type="module"> з окремим tailwind.tokens.js
+    (як було раніше) НЕ працює, коли відкрити цей файл подвійним кліком (file://) —
+    браузер блокує модульні import'и з локального диска через CORS. Простий
+    <link rel="stylesheet"> такому обмеженню не підлягає, тому й спосіб через
+    CSS-змінні + arbitrary value працює однаково і з сервера, і з диска.
   -->
   <link rel="stylesheet" href="./src/styles/tokens.css" />
   <link rel="stylesheet" href="./src/styles/tokens.dark.css" />
-  <script type="module">
-    import tailwindTokens from "./src/styles/tailwind.tokens.js";
-    tailwind.config = tailwindTokens;
-  </script>
 </head>
 
 <!--
@@ -71,15 +73,16 @@
 
     <!--
       Маленький кружечок-аватар зверху.
-      w-16 h-16      -> ширина й висота 4rem (64px)
-      rounded-full   -> робить елемент круглим
-      bg-indigo-500  -> заливка кольором (індиго)
+      w-16 h-16                                     -> ширина й висота 4rem (64px)
+      rounded-full                                   -> робить елемент круглим
+      bg-[var(--color-background-primary-bold-200)]  -> заливка кольором з токена
+                                                         (color.background.primary.bold_200)
       flex items-center justify-center -> центрує текст всередині кружечка
       text-white font-bold text-xl -> стилі тексту всередині
       mx-auto        -> центрує сам кружечок по горизонталі
       mb-4           -> відступ знизу від наступного елемента
     -->
-    <div class="w-16 h-16 rounded-full bg-background-primary-bold-200 flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
+    <div class="w-16 h-16 rounded-full bg-[var(--color-background-primary-bold-200)] flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
       T
     </div>
 
@@ -108,16 +111,18 @@
 
     <!--
       Кнопка.
-      w-full          -> займає всю ширину картки
-      bg-indigo-500   -> фон кнопки
-      hover:bg-indigo-600 -> колір фону при наведенні мишки (hover: — це стан)
+      w-full                          -> займає всю ширину картки
+      bg-[var(--color-background-success-bold-100)]  -> зелений фон (токен з tokens.json,
+                                          color.background.success.bold_100 = #03834a)
+      hover:bg-[var(--color-background-success-bold-200)] -> темніший зелений при наведенні
+                                          (color.background.success.bold_200 = #045130)
       text-white      -> білий текст
       font-semibold   -> напівжирний шрифт
       py-2            -> вертикальні відступи (padding-top/bottom)
       rounded-lg      -> заокруглені кути кнопки
       transition      -> плавна анімація зміни кольору при hover
     -->
-    <button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 rounded-lg transition">
+    <button class="w-full bg-[var(--color-background-success-bold-100)] hover:bg-[var(--color-background-success-bold-200)] text-white font-semibold py-2 rounded-lg transition">
       Дізнатись більше
     </button>
 
