@@ -73,17 +73,17 @@
 
     <!--
       Маленький кружечок-аватар зверху.
-      w-16 h-16                                     -> ширина й висота 4rem (64px)
-      rounded-full                                   -> робить елемент круглим
-      bg-[var(--color-background-primary-bold-200)]  -> заливка кольором з токена
-                                                         (color.background.primary.bold_200)
-      flex items-center justify-center -> центрує текст всередині кружечка
-      text-white font-bold text-xl -> стилі тексту всередині
+      w-16 h-16                                -> ширина й висота 4rem (64px)
+      rounded-full                              -> робить елемент круглим
+      bg-[var(--color-background-black-base)]   -> чорна заливка з токена
+                                                    (color.background.black.base = #101114)
+      flex items-center justify-center -> центрує вміст всередині кружечка
+      text-white font-bold text-xl -> стилі тексту/емоджі всередині
       mx-auto        -> центрує сам кружечок по горизонталі
       mb-4           -> відступ знизу від наступного елемента
     -->
-    <div class="w-16 h-16 rounded-full bg-[var(--color-background-primary-bold-200)] flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
-      T
+    <div class="w-16 h-16 rounded-full bg-[var(--color-background-black-base)] flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
+      T 👋
     </div>
 
     <!--
@@ -112,17 +112,17 @@
     <!--
       Кнопка.
       w-full                          -> займає всю ширину картки
-      bg-[var(--color-background-success-bold-100)]  -> зелений фон (токен з tokens.json,
-                                          color.background.success.bold_100 = #03834a)
-      hover:bg-[var(--color-background-success-bold-200)] -> темніший зелений при наведенні
-                                          (color.background.success.bold_200 = #045130)
+      bg-[var(--color-background-black-base)]  -> чорний фон (токен з tokens.json,
+                                          color.background.black.base = #101114)
+      hover:bg-[var(--color-background-neutral-bold-400)] -> трохи світліший при наведенні
+                                          (color.background.neutral.bold_400 = #17181a)
       text-white      -> білий текст
       font-semibold   -> напівжирний шрифт
       py-2            -> вертикальні відступи (padding-top/bottom)
       rounded-lg      -> заокруглені кути кнопки
       transition      -> плавна анімація зміни кольору при hover
     -->
-    <button class="w-full bg-[var(--color-background-success-bold-100)] hover:bg-[var(--color-background-success-bold-200)] text-white font-semibold py-2 rounded-lg transition">
+    <button class="w-full bg-[var(--color-background-black-base)] hover:bg-[var(--color-background-neutral-bold-400)] text-white font-semibold py-2 rounded-lg transition">
       Дізнатись більше
     </button>
 
