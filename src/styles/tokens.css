@@ -350,7 +350,7 @@
   --typography-body-sm-font-family: Inter;
   --typography-body-sm-font-weight: 400;
   --typography-body-sm-font-size: 14px;
-  --typography-body-sm-line-height: 16px;
+  --typography-body-sm-line-height: 20px; /** Виправлено 16->20: Figma мав 2 конфліктні variable (l-16 і l-20) для body/sm/line-height; live-компонент Input підтвердив, що реально використовується l-20. */
   --typography-body-sm-letter-spacing: 0; /** Ймовірно % (частка), не px — перевір перед використанням у CSS */
   --typography-body-md-paragraph-spacing: 20px;
   --typography-body-md-font-weight: 400;
